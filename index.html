@@ -143,6 +143,27 @@
         .delay-900 { animation-delay: 0.9s; }
         .delay-1000 { animation-delay: 1s; }
 
+        /* Mobile specific styles for Design Gallery */
+        @media (max-width: 767px) { /* Applies to screens smaller than 768px (sm breakpoint) */
+            .slide {
+                padding: 1rem; /* Reduced padding for mobile */
+                height: 400px; /* Adjusted fixed height for mobile slides */
+                max-height: 60vh; /* Adjusted max height for mobile responsiveness */
+            }
+
+            /* Hide in-page slider navigation arrows on mobile */
+            #designs .prev,
+            #designs .next {
+                display: none;
+            }
+
+            /* Hide full-screen modal navigation arrows on mobile */
+            #fullscreen-modal #modal-prev-btn,
+            #fullscreen-modal #modal-next-btn {
+                display: none;
+            }
+        }
+
     </style>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
