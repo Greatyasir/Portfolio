@@ -1,1 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yasir Mehmood | Portfolio</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Segoe UI',sans-serif;background:#000;color:#eee;line-height:1.6;}
+    a{color:#4CAF50;text-decoration:none;}a:hover{text-decoration:underline;}
+    .sidebar{position:fixed;top:0;left:0;width:240px;height:100vh;background:#111;
+      display:flex;flex-direction:column;align-items:center;padding:30px;
+      box-shadow:2px 0 20px rgba(0,255,0,0.2);}
+    .sidebar img{width:100px;height:100px;border-radius:50%;border:3px solid #4CAF50;
+      margin-bottom:10px;animation: glow 2s infinite alternate;}
+    @keyframes glow{from{box-shadow:0 0 5px #4CAF50;}to{box-shadow:0 0 20px #4CAF50;}}
+    .sidebar h2{color:#4CAF50;margin-bottom:30px;}
+    .menu a{display:block;width:100%;padding:12px;border-radius:5px;margin:5px 0;
+      transition:background 0.3s;}
+    .menu a:hover{background:rgba(76,175,80,0.2);}
+    .main{margin-left:260px;padding:40px;max-width:1000px;}
+    section{margin-bottom:80px;opacity:0;transform:translateY(20px);animation: appear 0.7s forwards;}
+    section:nth-child(1){animation-delay:0.2s;}
+    section:nth-child(2){animation-delay:0.4s;}
+    section:nth-child(3){animation-delay:0.6s;}
+    section:nth-child(4){animation-delay:0.8s;}
+    section:nth-child(5){animation-delay:1s;}
+    section:nth-child(6){animation-delay:1.2s;}
+    @keyframes appear{to{opacity:1;transform:translateY(0);}}
+    h1{border-bottom:3px solid #4CAF50;padding-bottom:10px;margin-bottom:20px;}
+    ul{padding-left:20px;margin-top:10px;}
+    .services{display:flex;flex-wrap:wrap;gap:20px;margin-top:20px;}
+    .service-card{background:#111;padding:20px;border-radius:8px;flex:1 1 280px;
+      box-shadow:0 0 10px rgba(76,175,80,0.2);transition:transform .3s,box-shadow .3s;}
+    .service-card:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(76,175,80,0.4);}
+    .service-card h3{margin-bottom:10px;color:#4CAF50;}
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:20px;}
+    .project-card{background:#111;border-radius:8px;overflow:hidden;
+      box-shadow:0 0 12px rgba(0,0,0,0.6);transition:transform .3s;}
+    .project-card:hover{transform:scale(1.03);}
+    .project-card img{width:100%;height:180px;object-fit:cover;}
+    .project-card .info{padding:15px;}
+    .project-card .info h3{margin-bottom:8px;color:#4CAF50;}
+    .project-card .info p{font-size:14px;color:#ccc;margin-bottom:8px;}
+    .project-card .info small{font-size:12px;color:#888;}
+    .designs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;margin-top:20px;}
+    .designs-grid img{width:100%;border-radius:8px;box-shadow:0 0 10px rgba(76,175,80,0.3);transition:transform .3s;}
+    .designs-grid img:hover{transform:scale(1.02);}
+    @media(max-width:768px){
+      .sidebar{position:relative;width:100%;flex-direction:row;justify-content:center;height:auto;padding:20px;}
+      .sidebar img{margin:0;} .sidebar h2{margin:0 20px;}
+      .main{margin:0;padding:20px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Yasir">
+    <h2>Yasir Mehmood</h2>
+    <nav class="menu">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#designs">Design Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <div class="main">
+    <section id="about">
+      <h1>About Me</h1>
+      <p>
+        I'm a dedicated <strong>Graphic Designer</strong> and <strong>Shopify Developer</strong> with over <strong>9 years of experience</strong> in eCommerce, branding, and online store optimization. I craft high-converting stores and compelling visuals that elevate brand identity and UX.
+      </p>
+      <ul>
+        <li><strong>Freelance Designer</strong> (2015–2017)</li>
+        <li><strong>HH Property & Marketing</strong> – Office Assistant & Digital Marketer (2017–2020)</li>
+        <li><strong>Femcare / Hyper-Sunk.com</strong> – Graphic Designer & Shopify Developer (2020–Present)</li>
+        <li><strong>ThinkTrek / Phonecase.pk</strong> – Remote Shopify Developer & Graphic Designer (2022–Present)</li>
+      </ul>
+    </section>
+
+    <section id="services">
+      <h1>Services</h1>
+      <div class="services">
+        <div class="service-card"><h3>Graphic Design</h3><p>Branding, banners, UI kits, product ads and visual content that captivate.</p></div>
+        <div class="service-card"><h3>Shopify Development</h3><p>Custom themes, responsive designs, product layout & conversion-driven UX.</p></div>
+        <div class="service-card"><h3>eCommerce Setup</h3><p>Store launch support, image editing, SEO tags, and product management.</p></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h1>eCommerce Projects Portfolio</h1>
+      <div class="projects">
+        <!-- Example -->
+        <div class="project-card">
+          <img src="https://www.progirly.com/assets/logo.png" alt="Progirly">
+          <div class="info">
+            <h3>Progirly.com</h3>
+            <p>Shopify store for eco-friendly menstrual care products.</p><small>Role: Theme customization & Product graphics – Shopify</small><br>
+            <a href="https://www.progirly.com" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://hyper-sunk.com/logo.png" alt="Hyper-Sunk">
+          <div class="info">
+            <h3>Hyper-Sunk.com</h3>
+            <p>IPL Laser device e-comm site with clean UX & banners.</p><small>Role: Theme dev & Graphics – Femcare</small><br>
+            <a href="https://hyper-sunk.com" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://bagzele.com/logo.png" alt="BagZele">
+          <div class="info">
+            <h3>BagZele.com</h3>
+            <p>Ladies' bags store; polished product presentation & banners.</p><small>Shopify dev & Image design</small><br>
+            <a href="https://bagzele.com" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://castify.pk/logo.png" alt="Castify">
+          <div class="info">
+            <h3>Castify.pk</h3>
+            <p>Glossy phone case store: custom UI & responsive design.</p><small>Shopify dev & Product graphics</small><br>
+            <a href="https://castify.pk" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://techshop.ae/logo.png" alt="TechShop">
+          <div class="info">
+            <h3>TechShop.ae</h3>
+            <p>UAE gadget accessories store: UX polish & visual assets.</p><small>Shopify dev & Graphics</small><br>
+            <a href="https://techshop.ae" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://www.solacewear.lk/logo.png" alt="SolaceWear">
+          <div class="info">
+            <h3>SolaceWear.com</h3>
+            <p>Apparel brand: product art & layout optimization.</p><small>Shopify dev & Design</small><br>
+            <a href="https://www.solacewear.lk" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://via.placeholder.com/400x200?text=Phonecase.pk" alt="Phonecase.pk">
+          <div class="info">
+            <h3>Phonecase.pk</h3>
+            <p>Custom phone cases; full theme build & UX flow.</p><small>ThinkTrek – Shopify Developer & Designer</small><br>
+            <a href="https://phonecase.pk" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="designs">
+      <h1>Graphic Design Work</h1>
+      <div class="designs-grid">
+        <img src="YOUR_IMAGE_URL_1" alt="Design 1">
+        <img src="YOUR_IMAGE_URL_2" alt="Design 2">
+        <img src="YOUR_IMAGE_URL_3" alt="Design 3">
+        <img src="YOUR_IMAGE_URL_4" alt="Design 4">
+      </div>
+    </section>
+
+    <section id="contact">
+      <h1>Contact</h1>
+      <p><strong>Email:</strong> mehmoodk908@gmail.com<br>
+      <strong>Phone:</strong> +92 345 9860434 / 0330 8060911<br>
+      <strong>Facebook:</strong> <a href="https://facebook.com/yasir.mehmood434" target="_blank">facebook.com/yasir.mehmood434</a><br>
+      <strong>Twitter:</strong> <a href="https://twitter.com/Yasir_mKhattak" target="_blank">@Yasir_mKhattak</a></p>
+    </section>
+  </div>
+</body>
+</html>
 
