@@ -1,623 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yasir Mehmood | Portfolio</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.ibb.co/Y7r4tqX6/334778185-174391352045897-7046675739063308292-n-1.jpg" type="image/jpeg">
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Yasir Mehmood's professional portfolio showcasing expertise in Graphic Design, Shopify Development, Digital Marketing, and SEO with over 9 years of experience.">
 
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Yasir Mehmood | Portfolio</title>
- <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: ;
-  }
-  html, body {
-  overflow-x: hidden;
-  width: 100%;
-}
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], // Using Inter as the default font
+                    },
+                    colors: {
+                        primary: '#3B82F6', // A slightly bolder blue
+                        secondary: '#60A5FA', // Lighter blue for accents
+                        darkBg: '#1F2937', // Dark background for sections
+                        lightBg: '#F9FAFB', // Light background for sections
+                        darkText: '#E5E7EB', // Light text on dark backgrounds
+                        lightText: '#374151', // Dark text on light backgrounds
+                        accent: '#FCD34D', // A subtle accent color (yellow)
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom CSS for glow effect and slider */
+        @keyframes glow {
+            from { box-shadow: 0 0 5px theme('colors.primary'); }
+            to { box-shadow: 0 0 20px theme('colors.primary'); }
+        }
+        .glow-effect {
+            animation: glow 2s infinite alternate;
+        }
 
-  body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #fdfdfd; /* Light background */
-  color: #222; /* Dark text */
-  line-height: 1.6;
-}
+        /* Ensure smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
 
-a {
-  color: #007BFF; /* Blue links */
-  text-decoration: none;
-}
+        /* Hide scrollbar for cleaner look, but allow scrolling */
+        body {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        body::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
 
-a:hover {
-  text-decoration: underline;
-}
+        /* Specific styles for slider */
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+        .slide {
+            min-width: 100%;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem; /* 32px */
+            height: 650px; /* NEW: Define a fixed height for each slide */
+            max-height: 80vh; /* NEW: Max height relative to viewport for responsiveness */
+        }
+        /* Ensure images within slides are styled for better presentation */
+        .slide img {
+            height: 100%; /* NEW: Image takes full height of the slide */
+            width: auto; /* NEW: Width adjusts to maintain aspect ratio */
+            max-width: 100%;
+            object-fit: contain; /* Ensures the entire image is visible, no cropping */
+            border-radius: 0.75rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            transition: transform 0.3s ease-in-out;
+        }
+        .slide img:hover {
+            transform: scale(1.02); /* Slight zoom on hover */
+        }
 
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 210px;
-  height: 100vh;
-  background: #fff;
-  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-}
-
-.sidebar-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  position: relative;
-}
-
-.sidebar img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 3px solid #007BFF;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 5px #007BFF;
-  }
-
-  to {
-    box-shadow: 0 0 20px #007BFF;
-  }
-}
-
-.sidebar-header h2 {
-  margin-top: 10px;
-  color: #007BFF;
-  text-align: center;
-  
-}
-
-.toggle-menu {
-  display: none;
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: none;
-  border: none;
-  font-size: 28px;
-  color: #007BFF;
-  cursor: pointer;
-}
-
-.menu a {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  border-radius: 5px;
-  margin: 5px 0;
-  transition: background 0.3s;
-  color: #333;
-}
-
-.menu a:hover {
-  background: rgba(0, 123, 255, 0.1);
-}
-
-.main {
-  margin-left: 260px;
-  padding: 40px;
-  max-width: 1000px;
-}
-
-section {
-  margin-bottom: 80px;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: appear 0.7s forwards;
-}
-
-@keyframes appear {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-h1 {
-  border-bottom: 3px solid #007BFF;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-ul {
-  padding-left: 20px;
-  margin-top: 10px;
-}
-
-.services {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.service-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  flex: 1 1 280px;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.1);
-  transition: transform .3s, box-shadow .3s;
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(0, 123, 255, 0.2);
-}
-
-.service-card h3 {
-  margin-bottom: 10px;
-  color: #007BFF;
-}
-
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.project-card {
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-  transition: transform .3s;
-}
-
-.project-card:hover {
-  transform: scale(1.03);
-}
-
-.project-card img {
-  display: none;
-}
-
-.project-card .info {
-  padding: 15px;
-}
-
-.project-card .info h3 {
-  margin-bottom: 8px;
-  color: #007BFF;
-}
-
-.project-card .info p {
-  font-size: 14px;
-  color: #444;
-  margin-bottom: 8px;
-}
-
-.project-card .info small {
-  font-size: 12px;
-  color: #888;
-}
-
-.designs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.designs-grid img {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.1);
-  transition: transform .3s;
-}
-
-.designs-grid img:hover {
-  transform: scale(1.02);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    padding: 20px;
-  }
-  
-  
-.sidebar img {
-  width: 100px;
-  height: 100px;
-}
-  .sidebar-header {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .sidebar-header h2 {
-    margin: 0 10px;
-    font-size: 30px;
-    text-align:left;
-    line-height: 1.1;
-  }
-
-  .toggle-menu {
-    display: block;
-    margin-top: 20px;
-    margin-right:30px;
-  }
-
-  .menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .menu.active {
-    display: flex;
-  }
-
-  .main {
-    margin: 0;
-    padding: 20px;
-  }
-
-  .sidebar img {
-    margin: 0;
-  }
-}
-.project-card img {
-  padding:40px;
-  display: block;
-  max-width: 80%;
-  object-fit: contain;
-}
-/* Slider styling */
-.slider-container {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-  text-align: center;
-}
-
-.slider {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.slider img {
-  width: 100%;
-  height: auto;
-  max-height: 500px;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgba(0, 123, 255, 0.2);
-}
-
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 123, 255, 0.3);
-  color: white;
-  font-size: 24px;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
-}
-
-
-
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin: 0 auto;
-}
-
-.service-box {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 20px 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  transition: 0.3s ease-in-out;
-}
-
-.service-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-}
-
-.service-box .icon {
-  font-size: 2.2rem;
-  color: #5a6ff0;
-  margin-bottom: 1px;
-  display: inline-block;
-}
-
-.service-box h3 {
-  font-size: 1.25rem;
-  margin-bottom: 12px;
-  color: #333;
-}
-
-.service-box p {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.5;
-}
-
-
-</style>
-
+        /* Custom animation for section appearance */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInSlideUp {
+            animation: fadeInSlideUp 0.7s ease-out forwards;
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-  <div class="sidebar">
-  <div class="sidebar-header">
-    <img src="https://i.ibb.co/Y7r4tqX6/334778185-174391352045897-7046675739063308292-n-1.jpg" alt="334778185-174391352045897-7046675739063308292-n-1" border="0">
-    <h2><b>Yasir</b><br> Mehmood</h2>
-    <button class="toggle-menu" onclick="toggleMenu()">☰</button>
-  </div>
-  <nav class="menu">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#services">Services</a>
-    <a href="#projects">eCommerce Projects</a>
-    <a href="#designs">Design Gallery</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</div>
+<body class="font-sans bg-lightBg text-lightText leading-relaxed antialiased">
 
+    <!-- Fixed Top Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full bg-white shadow-lg py-4 px-6 flex items-center justify-between z-50">
+        <!-- Logo/Name -->
+        <div class="flex items-center">
+            <img src="https://i.ibb.co/Y7r4tqX6/334778185-174391352045897-7046675739063308292-n-1.jpg"
+                 alt="Yasir Mehmood Profile Picture"
+                 class="w-12 h-12 rounded-full border-2 border-primary object-cover mr-3 glow-effect">
+            <h2 class="text-primary text-2xl font-bold">Yasir Mehmood</h2>
+        </div>
 
-  <div class="main">
-    <section id="about">
-  <h1>About Me</h1>
-  <p>
-    I'm a passionate <strong>Graphic Designer</strong>, <strong>Shopify Developer</strong>, and <strong>Digital Marketer</strong> with over <strong>9 years of experience</strong> specializing in eCommerce, branding, SEO, and online store optimization. I focus on creating visually compelling designs and high-performing Shopify stores that drive conversions and enhance user experience. With a deep understanding of digital trends, I blend creativity with strategy to help brands grow and thrive in competitive markets.
-  </p>
-</section>
+        <!-- Desktop Navigation -->
+        <nav id="main-menu-desktop" class="hidden md:flex space-x-6">
+            <a href="#about" class="text-lightText hover:text-primary font-medium transition-colors duration-300 px-3 py-2 rounded-md">About</a>
+            <a href="#experience" class="text-lightText hover:text-primary font-medium transition-colors duration-300 px-3 py-2 rounded-md">Experience</a>
+            <a href="#services" class="text-lightText hover:text-primary font-medium transition-colors duration-300 px-3 py-2 rounded-md">Services</a>
+            <a href="#projects" class="text-lightText hover:text-primary font-medium transition-colors duration-300 px-3 py-2 rounded-md">eCommerce Projects</a>
+            <a href="#designs" class="text-lightText hover:text-primary font-medium transition-colors duration-300 px-3 py-2 rounded-md">Design Gallery</a>
+            <a href="#contact" class="text-lightText hover:text-primary font-medium transition-colors duration-300 px-3 py-2 rounded-md">Contact</a>
+        </nav>
 
-<section id="experience">
-  <h1>Professional Experience</h1>
-  <div class="services">
-    <div class="service-card">
-      <i class="fas fa-pen-nib fa-2x"></i>
-      <h3>Freelance Designer</h3>
-      <span class="duration">2015 – 2017</span>
-      <p>
-        Created visual identities, UI mockups, and branding assets for diverse clients. Focused on delivering cohesive designs tailored to each brand's audience.
-      </p>
-    </div>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="menu-toggle" class="md:hidden text-primary text-3xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
 
-    <div class="service-card">
-      <i class="fas fa-building fa-2x"></i>
-      <h3>HH Property & Marketing</h3>
-      <span class="duration">2017 – 2020</span>
-      <p>
-        Office Assistant & Digital Marketer – Oversaw real estate marketing campaigns, content creation, and administrative coordination to support sales initiatives.
-      </p>
-    </div>
+    <!-- Mobile Navigation Overlay (Hidden by default) -->
+    <nav id="mobile-menu-overlay" class="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <button id="close-menu" class="absolute top-6 right-6 text-primary text-4xl focus:outline-none">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#about" class="text-lightText text-2xl font-semibold hover:text-primary transition-colors duration-300">About</a>
+        <a href="#experience" class="text-lightText text-2xl font-semibold hover:text-primary transition-colors duration-300">Experience</a>
+        <a href="#services" class="text-lightText text-2xl font-semibold hover:text-primary transition-colors duration-300">Services</a>
+        <a href="#projects" class="text-lightText text-2xl font-semibold hover:text-primary transition-colors duration-300">eCommerce Projects</a>
+        <a href="#designs" class="text-lightText text-2xl font-semibold hover:text-primary transition-colors duration-300">Design Gallery</a>
+        <a href="#contact" class="text-lightText text-2xl font-semibold hover:text-primary transition-colors duration-300">Contact</a>
+    </nav>
 
-    <div class="service-card">
-      <i class="fas fa-store fa-2x"></i>
-      <h3>Femcare / Hyper-Sunk.com</h3>
-      <span class="duration">2020 – Present</span>
-      <p>
-        Graphic Designer & Shopify Developer – Designed eCommerce visuals, managed Shopify storefronts, and optimized listings for SEO and paid advertising campaigns.
-      </p>
-    </div>
+    <!-- Main Content Area -->
+    <main class="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
 
-    <div class="service-card">
-      <i class="fas fa-laptop-code fa-2x"></i>
-      <h3>ThinkTrek / Phonecase.pk</h3>
-      <span class="duration">2022 – Present (Remote)</span>
-      <p>
-        Shopify Developer & Graphic Designer – Built responsive Shopify themes, improved user experience (UX) flows, and delivered high-impact visuals for promotions.
-      </p>
-    </div>
-  </div>
-</section>
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[calc(100vh-6rem)] flex items-center justify-center text-center bg-gradient-to-br from-primary to-secondary text-white rounded-xl shadow-xl p-8 mb-20 animate-fadeInSlideUp">
+            <div>
+                <img src="https://i.ibb.co/Y7r4tqX6/334778185-174391352045897-7046675739063308292-n-1.jpg"
+                     alt="Yasir Mehmood Profile Picture"
+                     class="w-32 h-32 rounded-full border-4 border-white object-cover mx-auto mb-6 glow-effect">
+                <h1 class="text-5xl font-extrabold mb-4 leading-tight">
+                    Hi, I'm <span class="text-accent">Yasir Mehmood</span>
+                </h1>
+                <p class="text-2xl font-light mb-8">
+                    A Passionate Graphic Designer, Shopify Developer, and Digital Marketer
+                </p>
+                <a href="#contact" class="inline-block bg-white text-primary font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-300 text-lg">
+                    Let's Connect!
+                </a>
+            </div>
+        </section>
 
+        <!-- About Me Section -->
+        <section id="about" class="py-16 mb-20 bg-white rounded-xl shadow-xl p-8 animate-fadeInSlideUp">
+            <h2 class="text-4xl font-bold text-gray-900 pb-3 mb-10 border-b-4 border-primary text-center">About Me</h2>
+            <p class="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto text-center">
+                With over <strong class="text-primary">9 years of experience</strong>, I specialize in eCommerce, branding, SEO, and online store optimization. My passion lies in crafting visually compelling designs and building high-performing Shopify stores that not only look great but also drive conversions and enhance user experience. I blend creativity with strategic thinking to help brands thrive in today's competitive digital landscape.
+            </p>
+        </section>
 
-    <section id="services">
-  <h1>Our Services</h1>
-  <div class="services-grid">
+        <!-- Professional Experience Section -->
+        <section id="experience" class="py-16 mb-20 bg-darkBg text-darkText rounded-xl shadow-xl p-8 animate-fadeInSlideUp">
+            <h2 class="text-4xl font-bold text-white pb-3 mb-10 border-b-4 border-secondary text-center">Professional Experience</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <!-- Experience Card 1 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-pen-nib text-accent text-4xl mb-4 block"></i>
+                    <h3 class="text-2xl font-semibold text-primary mb-2">Freelance Designer</h3>
+                    <span class="text-sm text-gray-400 mb-4 block">2015 – 2017</span>
+                    <p class="text-gray-300">Created visual identities, UI mockups, and branding assets for diverse clients. Focused on delivering cohesive designs tailored to each brand's audience.</p>
+                </div>
+                <!-- Experience Card 2 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-building text-accent text-4xl mb-4 block"></i>
+                    <h3 class="text-2xl font-semibold text-primary mb-2">HH Property & Marketing</h3>
+                    <span class="text-sm text-gray-400 mb-4 block">2017 – 2020</span>
+                    <p class="text-gray-300">Office Assistant & Digital Marketer – Oversaw real estate marketing campaigns, content creation, and administrative coordination to support sales initiatives.</p>
+                </div>
+                <!-- Experience Card 3 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-store text-accent text-4xl mb-4 block"></i>
+                    <h3 class="text-2xl font-semibold text-primary mb-2">Femcare / Hyper-Sunk.com</h3>
+                    <span class="text-sm text-gray-400 mb-4 block">2020 – Present</span>
+                    <p class="text-gray-300">Graphic Designer & Shopify Developer – Designed eCommerce visuals, managed Shopify storefronts, and optimized listings for SEO and paid advertising campaigns.</p>
+                </div>
+                <!-- Experience Card 4 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-laptop-code text-accent text-4xl mb-4 block"></i>
+                    <h3 class="text-2xl font-semibold text-primary mb-2">ThinkTrek / Phonecase.pk</h3>
+                    <span class="text-sm text-gray-400 mb-4 block">2022 – Present (Remote)</span>
+                    <p class="text-gray-300">Shopify Developer & Graphic Designer – Built responsive Shopify themes, improved user experience (UX) flows, and delivered high-impact visuals for promotions.</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="service-box">
-      <i class="fas fa-paint-brush icon"></i>
-      <h3>Graphic Design</h3>
-      <p>Design banners, packaging, brochures, UI kits, and branding assets that elevate user experience and brand recall.</p>
-    </div>
+        <!-- Services Section -->
+        <section id="services" class="py-16 mb-20 bg-white rounded-xl shadow-xl p-8 animate-fadeInSlideUp">
+            <h2 class="text-4xl font-bold text-gray-900 pb-3 mb-10 border-b-4 border-primary text-center">Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service Box 1 -->
+                <div class="bg-lightBg p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-center">
+                    <i class="fas fa-paint-brush text-secondary text-5xl mb-4 block"></i>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Graphic Design</h3>
+                    <p class="text-gray-700">Design banners, packaging, brochures, UI kits, and branding assets that elevate user experience and brand recall.</p>
+                </div>
+                <!-- Service Box 2 -->
+                <div class="bg-lightBg p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-center">
+                    <i class="fas fa-laptop-code text-secondary text-5xl mb-4 block"></i>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Shopify Development</h3>
+                    <p class="text-gray-700">Create high-converting Shopify stores with responsive design, custom themes, and optimized UX.</p>
+                </div>
+                <!-- Service Box 3 -->
+                <div class="bg-lightBg p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-center">
+                    <i class="fas fa-bullhorn text-secondary text-5xl mb-4 block"></i>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Digital Marketing</h3>
+                    <p class="text-gray-700">Run targeted campaigns across Facebook, Google, and social platforms to grow and convert your audience.</p>
+                </div>
+                <!-- Service Box 4 -->
+                <div class="bg-lightBg p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-center">
+                    <i class="fas fa-search text-secondary text-5xl mb-4 block"></i>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">SEO Optimization</h3>
+                    <p class="text-gray-700">Boost search rankings with on-page SEO, meta optimization, keyword strategy, and technical audits.</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="service-box">
-      <i class="fas fa-laptop-code icon"></i>
-      <h3>Shopify Development</h3>
-      <p>Create high-converting Shopify stores with responsive design, custom themes, and optimized UX.</p>
-    </div>
+        <!-- eCommerce Projects Section -->
+        <section id="projects" class="py-16 mb-20 bg-darkBg text-darkText rounded-xl shadow-xl p-8 animate-fadeInSlideUp">
+            <h2 class="text-4xl font-bold text-white pb-3 mb-10 border-b-4 border-secondary text-center">eCommerce Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
+                    <div class="h-48 flex items-center justify-center bg-gray-900 rounded-t-xl border-b border-gray-700 p-4">
+                        <img src="https://trendly.pk/cdn/shop/files/trendly_logo_87434b99-c0a1-401a-aeb3-aa57fb174f2a_225x@2x.png"
+                             alt="Trendly.pk logo"
+                             class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-semibold text-primary mb-2">Trendly.pk</h3>
+                        <p class="text-gray-300 text-base mb-4 flex-grow">Modern lifestyle eCommerce brand offering trendy fashion, beauty, and accessories with a clean, responsive Shopify layout.</p>
+                        <small class="text-gray-400 text-sm mb-3 block">Role: Shopify Theme Customization & Visual Design</small>
+                        <a href="https://trendly.pk" target="_blank" rel="noopener noreferrer" class="text-secondary font-semibold hover:underline self-start text-lg">Visit Website →</a>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
+                    <div class="h-48 flex items-center justify-center bg-gray-900 rounded-t-xl border-b border-gray-700 p-4">
+                        <img src="https://i.ibb.co/C3XC8zxf/Untitled-1-4135ecb8-b59f-4456-85df-fd5690c2c244.webp"
+                             alt="Progirly.com logo"
+                             class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-semibold text-primary mb-2">Progirly.com</h3>
+                        <p class="text-gray-300 text-base mb-4 flex-grow">Shopify store offering reusable menstrual cups with eco-conscious branding. Focus on sustainability and comfort.</p>
+                        <small class="text-gray-400 text-sm mb-3 block">Role: Theme customization & product graphics – Shopify</small>
+                        <a href="https://www.progirly.com" target="_blank" rel="noopener noreferrer" class="text-secondary font-semibold hover:underline self-start text-lg">Visit Website →</a>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
+                    <div class="h-48 flex items-center justify-center bg-gray-900 rounded-t-xl border-b border-gray-700 p-4">
+                        <img src="https://hyper-sunk.com/cdn/shop/files/Untitled-1_40559f3c-0d6f-4607-940f-b07c6555db32.png"
+                             alt="Hyper-Sunk.com logo"
+                             class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-semibold text-primary mb-2">Hyper-Sunk.com</h3>
+                        <p class="text-gray-300 text-base mb-4 flex-grow">Online store for FDA-approved IPL laser hair removal devices with sleek UX and promotional banners.</p>
+                        <small class="text-gray-400 text-sm mb-3 block">Role: Theme development & graphics – Femcare</small>
+                        <a href="https://hyper-sunk.com" target="_blank" rel="noopener noreferrer" class="text-secondary font-semibold hover:underline self-start text-lg">Visit Website →</a>
+                    </div>
+                </div>
+                <!-- Project Card 4 -->
+                <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
+                    <div class="h-48 flex items-center justify-center bg-gray-900 rounded-t-xl border-b border-gray-700 p-4">
+                        <img src="https://bagzele.com/cdn/shop/files/BagZelelogo.png"
+                             alt="BagZele.com logo"
+                             class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-semibold text-primary mb-2">BagZele.com</h3>
+                        <p class="text-gray-300 text-base mb-4 flex-grow">Women’s bags e‑commerce store—premium styling, polished product displays and promotional banners.</p>
+                        <small class="text-gray-400 text-sm mb-3 block">Role: Shopify dev & image design</small>
+                        <a href="https://bagzele.com" target="_blank" rel="noopener noreferrer" class="text-secondary font-semibold hover:underline self-start text-lg">Visit Website →</a>
+                    </div>
+                </div>
+                <!-- Project Card 5 -->
+                <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
+                    <div class="h-48 flex items-center justify-center bg-gray-900 rounded-t-xl border-b border-gray-700 p-4">
+                        <img src="https://i.ibb.co/4Rcy3bT8/castify.png"
+                             alt="Castify.pk logo"
+                             class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-semibold text-primary mb-2">Castify.pk</h3>
+                        <p class="text-gray-300 text-base mb-4 flex-grow">High-quality custom phone case store with glossy visuals, responsive UI and UX flow.</p>
+                        <small class="text-gray-400 text-sm mb-3 block">Role: Shopify dev & product graphics</small>
+                        <a href="https://castify.pk" target="_blank" rel="noopener noreferrer" class="text-secondary font-semibold hover:underline self-start text-lg">Visit Website →</a>
+                    </div>
+                </div>
+                <!-- Project Card 6 -->
+                <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
+                    <div class="h-48 flex items-center justify-center bg-gray-900 rounded-t-xl border-b border-gray-700 p-4">
+                        <img src="https://i.ibb.co/GfWpJjJy/Black-Edgy-We-Are-Open-Instagram-Post-6-1200x1200.png"
+                             alt="TechShop.ae logo"
+                             class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-semibold text-primary mb-2">TechShop.ae</h3>
+                        <p class="text-gray-300 text-base mb-4 flex-grow">UAE gadget & accessory store offering fast delivery with polished UX and visual assets.</p>
+                        <small class="text-gray-400 text-sm mb-3 block">Role: Shopify dev & graphics</small>
+                        <a href="https://techshop.ae" target="_blank" rel="noopener noreferrer" class="text-secondary font-semibold hover:underline self-start text-lg">Visit Website →</a>
+                    </div>
+                </div>
+                <!-- Project Card 7 -->
+                <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
+                    <div class="h-48 flex items-center justify-center bg-gray-900 rounded-t-xl border-b border-gray-700 p-4">
+                        <img src="https://solacewear.com/cdn/shop/files/solacewear_tag_2_63e9ad43-1a8d-426d-881e-27cc05f7e4c0.png"
+                             alt="SolaceWear.com logo"
+                             class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-semibold text-primary mb-2">SolaceWear.com</h3>
+                        <p class="text-gray-300 text-base mb-4 flex-grow">Elegant ready-to-wear Pakistani clothing for women, blending comfort and timeless design—featuring breathable lawn fabrics, formal wear, basics, and new arrivals.</p>
+                        <small class="text-gray-400 text-sm mb-3 block">Role: Shopify Development & Visual Design</small>
+                        <a href="https://solacewear.com" target="_blank" rel="noopener noreferrer" class="text-secondary font-semibold hover:underline self-start text-lg">Visit Website →</a>
+                    </div>
+                </div>
+                <!-- Project Card 8 -->
+                <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
+                    <div class="h-48 flex items-center justify-center bg-gray-900 rounded-t-xl border-b border-gray-700 p-4">
+                        <img src="https://phonecase.pk/cdn/shop/files/phonecase_logo_c7bd4d35-3c72-4816-8e29-dbb8f55f4b50_205x@2x.png"
+                             alt="Phonecase.pk logo"
+                             class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-semibold text-primary mb-2">Phonecase.pk</h3>
+                        <p class="text-gray-300 text-base mb-4 flex-grow">Pakistan’s #1 mobile-case store featuring custom theme build, UX optimizations, and product visuals.</p>
+                        <small class="text-gray-400 text-sm mb-3 block">ThinkTrek – Shopify Developer & Designer</small>
+                        <a href="https://phonecase.pk" target="_blank" rel="noopener noreferrer" class="text-secondary font-semibold hover:underline self-start text-lg">Visit Website →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="service-box">
-      <i class="fas fa-bullhorn icon"></i>
-      <h3>Digital Marketing</h3>
-      <p>Run targeted campaigns across Facebook, Google, and social platforms to grow and convert your audience.</p>
-    </div>
+        <!-- Graphic Design Work Section (Improved Slider) -->
+        <section id="designs" class="py-16 mb-20 bg-white rounded-xl shadow-xl p-8 animate-fadeInSlideUp">
+            <h2 class="text-4xl font-bold text-gray-900 pb-3 mb-10 border-b-4 border-primary text-center">Design Gallery</h2>
+            <div class="slider-container w-full max-w-5xl mx-auto rounded-xl shadow-2xl bg-gray-100 border border-gray-200">
+                <div class="slider" id="designSlider">
+                    <div class="slide p-6"><img src="https://i.ibb.co/mCcXF81V/Untitled-939-x-822-px-30f702e4-492c-4089-9348-ab101f491b7b-900x.png" alt="Digital marketing social media post design" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/FkYgxjrZ/1-5.png" alt="Fashion sale banner design for online store" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/yBZ4SRZj/1-14.png" alt="Product promotion graphic for beauty brand" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/QjNfrC1s/1-15.png" alt="E-commerce product advertisement design" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/KjhC0r4r/xzas.png" alt="Skincare product ad with clean aesthetic" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/PzsRpKzF/BagZele.png" alt="BagZele website banner design" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/PszZfb5w/handbag.png" alt="Handbag collection promotional graphic" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/GgdBSs7/4.jpg" alt="Cosmetics product display design" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/HTTtPb99/Marina.png" alt="Marina fashion brand identity design" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/3Z8bHfP/Untitled-design-4.png" alt="Minimalist product advertisement design" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/HDtXYMdc/3.png" alt="Beauty product promotional graphic" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/J4PgC16/capcut-PRo-2.png" alt="CapCut Pro app advertisement" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/SDs4mfVH/STYLING-COMB-Easy-Styling-Protect-your-hair-2-IN-1-DESIGN-2-Styles-Option-3.png" alt="Styling comb product feature graphic" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                    <div class="slide p-6"><img src="https://i.ibb.co/jvK8vW28/KYRGYZTAN-20240417-193626-0000-pdf.png" alt="Kyrgyzstan travel poster design" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
+                </div>
+                <button class="absolute top-1/2 -translate-y-1/2 left-4 bg-primary/80 hover:bg-primary text-white text-4xl p-4 rounded-full shadow-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-75" onclick="changeSlide(-1)" aria-label="Previous Design">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="absolute top-1/2 -translate-y-1/2 right-4 bg-primary/80 hover:bg-primary text-white text-4xl p-4 rounded-full shadow-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-75" onclick="changeSlide(1)" aria-label="Next Design">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
 
-    <div class="service-box">
-      <i class="fas fa-search icon"></i>
-      <h3>SEO Optimization</h3>
-      <p>Boost search rankings with on-page SEO, meta optimization, keyword strategy, and technical audits.</p>
-    </div>
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 mb-20 bg-white rounded-xl shadow-xl p-8 animate-fadeInSlideUp">
+            <h2 class="text-4xl font-bold text-gray-900 pb-3 mb-10 border-b-4 border-primary text-center">Contact</h2>
+            <div class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-center">
+                <p class="mb-4">
+                    <strong class="text-primary">Email:</strong> <a href="mailto:mehmoodk908@gmail.com" class="text-blue-600 hover:underline">mehmoodk908@gmail.com</a>
+                </p>
+                <p class="mb-4">
+                    <strong class="text-primary">Phone:</strong> +92 345 9860434 / 0330 8060911
+                </p>
+                <p class="mb-4">
+                    <strong class="text-primary">Facebook:</strong> <a href="https://facebook.com/yasir.mehmood434" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">facebook.com/yasir.mehmood434</a>
+                </p>
+                <p class="mt-8 text-xl font-semibold text-gray-800">
+                    Ready to start a project? Let's connect!
+                </p>
+            </div>
+        </section>
+    </main>
 
-  </div>
-</section>
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const closeMenuButton = document.getElementById('close-menu');
 
-  <section id="projects">
-  <h1>eCommerce Projects</h1>
-  <div class="projects">
-<div class="project-card">
-  <img src="https://trendly.pk/cdn/shop/files/trendly_logo_87434b99-c0a1-401a-aeb3-aa57fb174f2a_225x@2x.png" alt="Trendly.pk logo">
-  <div class="info">
-    <h3>Trendly.pk</h3>
-    <p>Modern lifestyle eCommerce brand offering trendy fashion, beauty, and accessories with a clean, responsive Shopify layout.</p>
-    <small>Role: Shopify Theme Customization & Visual Design</small><br>
-    <a href="https://trendly.pk" target="_blank">Visit Website →</a>
-  </div>
-  <div class="logo-placeholder"></div>
-</div>
+        menuToggle.addEventListener('click', () => {
+            mobileMenuOverlay.classList.remove('translate-x-full');
+            mobileMenuOverlay.classList.add('translate-x-0');
+        });
 
-    <div class="project-card">
-      <img src="https://i.ibb.co/C3XC8zxf/Untitled-1-4135ecb8-b59f-4456-85df-fd5690c2c244.webp" alt="Progirly logo">
-      <div class="info">
-        <h3>Progirly.com</h3>
-        <p>Shopify store offering reusable menstrual cups with eco-conscious branding. Focus on sustainability and comfort.</p>
-        <small>Role: Theme customization & product graphics – Shopify</small><br>
-        <a href="https://www.progirly.com" target="_blank">Visit Website →</a>
-      </div>
-      <!-- Logo area placeholder -->
-      <div class="logo-placeholder"></div>
-    </div>
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenuOverlay.classList.remove('translate-x-0');
+            mobileMenuOverlay.classList.add('translate-x-full');
+        });
 
-    <div class="project-card">
-      <img src="https://hyper-sunk.com/cdn/shop/files/Untitled-1_40559f3c-0d6f-4607-940f-b07c6555db32.png" alt="Hyper-Sunk logo">
-      <div class="info">
-        <h3>Hyper-Sunk.com</h3>
-        <p>Online store for FDA-approved IPL laser hair removal devices with sleek UX and promotional banners.</p>
-        <small>Role: Theme development & graphics – Femcare</small><br>
-        <a href="https://hyper-sunk.com" target="_blank">Visit Website →</a>
-      </div>
-      <div class="logo-placeholder"></div>
-    </div>
+        // Close mobile menu when a navigation link is clicked
+        document.querySelectorAll('#mobile-menu-overlay a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuOverlay.classList.remove('translate-x-0');
+                mobileMenuOverlay.classList.add('translate-x-full');
+            });
+        });
 
-    <div class="project-card">
-      <img src="https://bagzele.com/cdn/shop/files/BagZelelogo.png" alt="BagZele logo">
-      <div class="info">
-        <h3>BagZele.com</h3>
-        <p>Women’s bags e‑commerce store—premium styling, polished product displays and promotional banners.</p>
-        <small>Role: Shopify dev & image design</small><br>
-        <a href="https://bagzele.com" target="_blank">Visit Website →</a>
-      </div>
-      <div class="logo-placeholder"></div>
-    </div>
+        // Image Slider Functionality
+        let currentSlide = 0;
+        const slider = document.getElementById("designSlider");
+        const slides = slider.querySelectorAll('.slide');
+        const totalSlides = slides.length;
 
-    <div class="project-card">
-      <img src="https://i.ibb.co/4Rcy3bT8/castify.png" alt="Castify logo">
-      <div class="info">
-        <h3>Castify.pk</h3>
-        <p>High-quality custom phone case store with glossy visuals, responsive UI and UX flow.</p>
-        <small>Role: Shopify dev & product graphics</small><br>
-        <a href="https://castify.pk" target="_blank">Visit Website →</a>
-      </div>
-      <div class="logo-placeholder"></div>
-    </div>
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            }
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
 
-    <div class="project-card">
-      <img src="https://i.ibb.co/GfWpJjJy/Black-Edgy-We-Are-Open-Instagram-Post-6-1200x1200.png" alt="TechShop logo">
-      <div class="info">
-        <h3>TechShop.ae</h3>
-        <p>UAE gadget & accessory store offering fast delivery with polished UX and visual assets.</p>
-        <small>Role: Shopify dev & graphics</small><br>
-        <a href="https://techshop.ae" target="_blank">Visit Website →</a>
-      </div>
-      <div class="logo-placeholder"></div>
-    </div>
+        // Active Navigation Link on Scroll (for desktop)
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('main section');
+            const navLinks = document.querySelectorAll('#main-menu-desktop a');
 
-    <div class="project-card">
-  <img src="https://solacewear.com/cdn/shop/files/solacewear_tag_2_63e9ad43-1a8d-426d-881e-27cc05f7e4c0.png" alt="SolaceWear logo">
-  <div class="info">
-    <h3>SolaceWear.com</h3>
-    <p>Elegant ready-to-wear Pakistani clothing for women, blending comfort and timeless design—featuring breathable lawn fabrics, formal wear, basics, and new arrivals.</p>
-    <small>Role: Shopify Development & Visual Design</small><br>
-    <a href="https://solacewear.com" target="_blank">Visit Website →</a>
-  </div>
-  <div class="logo-placeholder"></div>
-</div>
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '-20% 0px -80% 0px', // Adjust this to make the active state trigger when section is more in view
+                threshold: 0 // Trigger as soon as any part of the section enters the rootMargin
+            };
 
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('bg-primary/10', 'text-primary', 'font-bold'));
+                        const targetId = entry.target.id;
+                        const activeLink = document.querySelector(`#main-menu-desktop a[href="#${targetId}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('bg-primary/10', 'text-primary', 'font-bold');
+                        }
+                    }
+                });
+            }, observerOptions);
 
-    <div class="project-card">
-      <img src="https://phonecase.pk/cdn/shop/files/phonecase_logo_c7bd4d35-3c72-4816-8e29-dbb8f55f4b50_205x@2x.png" alt="Phonecase.pk">
-      <div class="info">
-        <h3>Phonecase.pk</h3>
-        <p>Pakistan’s #1 mobile-case store featuring custom theme build, UX optimizations, and product visuals.</p>
-        <small>ThinkTrek – Shopify Developer & Designer</small><br>
-        <a href="https://phonecase.pk" target="_blank">Visit Website →</a>
-      </div>
-      <div class="logo-placeholder"></div>
-    </div>
-
-  </div>
-</section>
-
-
-    <section id="designs">
-  <h1>Graphic Design Work</h1>
-  <div class="slider-container">
-    <button class="prev" onclick="changeSlide(-1)">❮</button>
-    <div class="slider" id="designSlider">
-      <img src="https://i.ibb.co/mCcXF81V/Untitled-939-x-822-px-30f702e4-492c-4089-9348-ab101f491b7b-900x.png" alt="Untitled Design">
-      <img src="https://i.ibb.co/FkYgxjrZ/1-5.png" alt="Design 1">
-      <img src="https://i.ibb.co/yBZ4SRZj/1-14.png" alt="Design 2">
-      <img src="https://i.ibb.co/QjNfrC1s/1-15.png" alt="Design 3">
-      <img src="https://i.ibb.co/KjhC0r4r/xzas.png" alt="Design 4">
-      <img src="https://i.ibb.co/PzsRpKzF/BagZele.png" alt="BagZele">
-      <img src="https://i.ibb.co/PszZfb5w/handbag.png" alt="Handbag Design">
-      <img src="https://i.ibb.co/GgdBSs7/4.jpg" alt="Design 5">
-      <img src="https://i.ibb.co/HTTtPb99/Marina.png" alt="Marina">
-      <img src="https://i.ibb.co/3Z8bHfP/Untitled-design-4.png" alt="Untitled Design 4">
-      <img src="https://i.ibb.co/HDtXYMdc/3.png" alt="Design 6">
-      <img src="https://i.ibb.co/J4PgC16/capcut-PRo-2.png" alt="CapCut Pro">
-      <img src="https://i.ibb.co/SDs4mfVH/STYLING-COMB-Easy-Styling-Protect-your-hair-2-IN-1-DESIGN-2-Styles-Option-3.png" alt="Styling Comb Design">
-      <img src="https://i.ibb.co/jvK8vW28/KYRGYZTAN-20240417-193626-0000-pdf.png" alt="KYRGYZTAN Poster">
-    </div>
-    <button class="next" onclick="changeSlide(1)">❯</button>
-  </div>
-</section>
-
-
-    <section id="contact">
-      <h1>Contact</h1>
-      <p><strong>Email:</strong> mehmoodk908@gmail.com<br>
-      <strong>Phone:</strong> +92 345 9860434 / 0330 8060911<br>
-      <strong>Facebook:</strong> <a href="https://facebook.com/yasir.mehmood434" target="_blank">facebook.com/yasir.mehmood434</a><br>
-      
-    </section>
-  </div>
-<script>
-  function toggleMenu() {
-    document.querySelector('.menu').classList.toggle('active');
-  }
-  
-</script>
-<script>
-  let currentSlide = 0;
-  const slider = document.getElementById("designSlider");
-  const totalSlides = slider.children.length;
-
-  function changeSlide(direction) {
-    currentSlide += direction;
-    if (currentSlide < 0) currentSlide = totalSlides - 1;
-    if (currentSlide >= totalSlides) currentSlide = 0;
-
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-  }
-</script>
-
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
