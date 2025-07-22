@@ -39,23 +39,23 @@
       display: inline-block;
       padding-bottom: 5px;
     }
-    .projects {
+    .projects, .designs {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       margin-top: 20px;
     }
-    .project-card {
+    .project-card, .design-card {
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.06);
       overflow: hidden;
       transition: transform 0.3s ease;
     }
-    .project-card:hover {
+    .project-card:hover, .design-card:hover {
       transform: translateY(-5px);
     }
-    .project-card img {
+    .project-card img, .design-card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
@@ -125,7 +125,22 @@
         </div>
       </div>
 
-      <!-- Add more projects the same way -->
+    </div>
+  </section>
+
+  <section>
+    <h2>Graphic Design Work</h2>
+    <div class="designs">
+      <div class="design-card">
+        <img src="https://via.placeholder.com/400x200?text=Instagram+Ad" alt="Design">
+        <div class="project-content">
+          <h3>Instagram Ad Design</h3>
+          <p>Created in Canva for Femcare — bold, modern, and product-focused.</p>
+        </div>
+      </div>
+
+      <!-- You can add more designs here by duplicating this block -->
+      <!-- <div class="design-card">...</div> -->
 
     </div>
   </section>
