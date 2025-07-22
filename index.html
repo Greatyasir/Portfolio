@@ -58,16 +58,16 @@
         /* Specific styles for slider */
         .slider-container {
             position: relative;
-            overflow: hidden;
+            overflow: hidden; /* Keep overflow hidden for desktop slider */
         }
         .slider {
-            display: flex;
+            display: flex; /* Default for desktop slider */
             transition: transform 0.5s ease-in-out;
             width: 100%;
         }
         .slide {
-            min-width: 100%;
-            flex-shrink: 0;
+            min-width: 100%; /* Default for desktop slider */
+            flex-shrink: 0; /* Default for desktop slider */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -145,16 +145,33 @@
 
         /* Mobile specific styles for Design Gallery */
         @media (max-width: 767px) { /* Applies to screens smaller than 768px (sm breakpoint) */
-            .slide {
-                padding: 1rem; /* Reduced padding for mobile */
-                height: 400px; /* Adjusted fixed height for mobile slides */
-                max-height: 60vh; /* Adjusted max height for mobile responsiveness */
+            .slider-container {
+                overflow: visible; /* Allow content to flow, no longer a hidden slider */
+                box-shadow: none; /* Remove shadow if it's no longer a container for a single slide */
+                border: none; /* Remove border */
+                background-color: transparent; /* Transparent background */
             }
-
-            /* Hide in-page slider navigation arrows on mobile */
-            #designs .prev,
-            #designs .next {
-                display: none;
+            .slider {
+                display: grid; /* Change to grid layout for mobile */
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid columns */
+                gap: 1rem; /* Gap between images */
+                transition: none; /* No transition for grid layout */
+                transform: none !important; /* Reset any transform from JS */
+            }
+            .slide {
+                min-width: auto; /* Allow slides to size naturally within grid */
+                flex-shrink: 1; /* Allow shrinking */
+                padding: 0; /* Remove padding from individual slides */
+                height: auto; /* Let height adjust to image content */
+                min-height: 150px; /* Ensure a minimum height for very small images */
+                max-height: none; /* No max height restriction */
+            }
+            .slide img {
+                width: 100%; /* Image takes full width of its grid cell */
+                height: 200px; /* Fixed height for consistency in grid */
+                object-fit: cover; /* Cover the area, may crop */
+                border-radius: 0.5rem; /* Slightly smaller border radius for grid items */
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Lighter shadow for grid items */
             }
 
             /* Hide full-screen modal navigation arrows on mobile */
@@ -162,6 +179,12 @@
             #fullscreen-modal #modal-next-btn {
                 display: none;
             }
+        }
+
+        /* Hide in-page slider navigation arrows for Design Gallery on all screen sizes */
+        #designs .prev,
+        #designs .next {
+            display: none;
         }
 
     </style>
@@ -257,14 +280,9 @@
                     <p class="text-gray-300">Office Assistant & Digital Marketer – Oversaw real estate marketing campaigns, content creation, and administrative coordination to support sales initiatives.</p>
                 </div>
                 <!-- Experience Card 3 -->
+                <!-- Removed Femcare / Hyper-Sunk.com experience card -->
+                <!-- Removed Femcare / Hyper-Sunk.com experience card -->
                 <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-fadeInSlideUp delay-400">
-                    <i class="fas fa-store text-accent text-4xl mb-4 block"></i>
-                    <h3 class="text-2xl font-semibold text-primary mb-2">Femcare / Hyper-Sunk.com</h3>
-                    <span class="text-sm text-gray-400 mb-4 block">2020 – Present</span>
-                    <p class="text-gray-300">Graphic Designer & Shopify Developer – Designed eCommerce visuals, managed Shopify storefronts, and optimized listings for SEO and paid advertising campaigns.</p>
-                </div>
-                <!-- Experience Card 4 -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-fadeInSlideUp delay-500">
                     <i class="fas fa-laptop-code text-accent text-4xl mb-4 block"></i>
                     <h3 class="text-2xl font-semibold text-primary mb-2">ThinkTrek / Phonecase.pk</h3>
                     <span class="text-sm text-gray-400 mb-4 block">2022 – Present (Remote)</span>
@@ -310,7 +328,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project Card 1 -->
                 <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col animate-fadeInSlideUp delay-200">
-                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4"> <!-- Changed bg-gray-900 to bg-white -->
+                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4">
                         <img src="https://trendly.pk/cdn/shop/files/trendly_logo_87434b99-c0a1-401a-aeb3-aa57fb174f2a_225x@2x.png"
                              alt="Trendly.pk logo"
                              class="max-h-full max-w-full object-contain">
@@ -324,7 +342,7 @@
                 </div>
                 <!-- Project Card 2 -->
                 <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col animate-fadeInSlideUp delay-300">
-                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4"> <!-- Changed bg-gray-900 to bg-white -->
+                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4">
                         <img src="https://i.ibb.co/C3XC8zxf/Untitled-1-4135ecb8-b59f-4456-85df-fd5690c2c244.webp"
                              alt="Progirly.com logo"
                              class="max-h-full max-w-full object-contain">
@@ -338,7 +356,7 @@
                 </div>
                 <!-- Project Card 3 -->
                 <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col animate-fadeInSlideUp delay-400">
-                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4"> <!-- Changed bg-gray-900 to bg-white -->
+                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4">
                         <img src="https://hyper-sunk.com/cdn/shop/files/Untitled-1_40559f3c-0d6f-4607-940f-b07c6555db32.png"
                              alt="Hyper-Sunk.com logo"
                              class="max-h-full max-w-full object-contain">
@@ -352,7 +370,7 @@
                 </div>
                 <!-- Project Card 4 -->
                 <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col animate-fadeInSlideUp delay-500">
-                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4"> <!-- Changed bg-gray-900 to bg-white -->
+                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4">
                         <img src="https://bagzele.com/cdn/shop/files/BagZelelogo.png"
                              alt="BagZele.com logo"
                              class="max-h-full max-w-full object-contain">
@@ -366,7 +384,7 @@
                 </div>
                 <!-- Project Card 5 -->
                 <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col animate-fadeInSlideUp delay-600">
-                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4"> <!-- Changed bg-gray-900 to bg-white -->
+                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4">
                         <img src="https://i.ibb.co/4Rcy3bT8/castify.png"
                              alt="Castify.pk logo"
                              class="max-h-full max-w-full object-contain">
@@ -380,7 +398,7 @@
                 </div>
                 <!-- Project Card 6 -->
                 <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col animate-fadeInSlideUp delay-700">
-                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4"> <!-- Changed bg-gray-900 to bg-white -->
+                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4">
                         <img src="https://i.ibb.co/GfWpJjJy/Black-Edgy-We-Are-Open-Instagram-Post-6-1200x1200.png"
                              alt="TechShop.ae logo"
                              class="max-h-full max-w-full object-contain">
@@ -394,7 +412,7 @@
                 </div>
                 <!-- Project Card 7 -->
                 <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col animate-fadeInSlideUp delay-800">
-                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4"> <!-- Changed bg-gray-900 to bg-white -->
+                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4">
                         <img src="https://solacewear.com/cdn/shop/files/solacewear_tag_2_63e9ad43-1a8d-426d-881e-27cc05f7e4c0.png"
                              alt="SolaceWear.com logo"
                              class="max-h-full max-w-full object-contain">
@@ -408,7 +426,7 @@
                 </div>
                 <!-- Project Card 8 -->
                 <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col animate-fadeInSlideUp delay-900">
-                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4"> <!-- Changed bg-gray-900 to bg-white -->
+                    <div class="h-48 flex items-center justify-center bg-white rounded-t-xl border-b border-gray-700 p-4">
                         <img src="https://phonecase.pk/cdn/shop/files/phonecase_logo_c7bd4d35-3c72-4816-8e29-dbb8f55f4b50_205x@2x.png"
                              alt="Phonecase.pk logo"
                              class="max-h-full max-w-full object-contain">
@@ -443,12 +461,7 @@
                     <div class="slide p-6"><img src="https://i.ibb.co/SDs4mfVH/STYLING-COMB-Easy-Styling-Protect-your-hair-2-IN-1-DESIGN-2-Styles-Option-3.png" alt="Styling comb product feature graphic" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
                     <div class="slide p-6"><img src="https://i.ibb.co/jvK8vW28/KYRGYZTAN-20240417-193626-0000-pdf.png" alt="Kyrgyzstan travel poster design" class="max-h-[600px] h-auto w-auto max-w-full object-contain rounded-lg shadow-md"></div>
                 </div>
-                <button class="absolute top-1/2 -translate-y-1/2 left-4 bg-primary/80 hover:bg-primary text-white text-4xl p-4 rounded-full shadow-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-75 animate-fadeIn delay-200" onclick="changeSlide(-1)" aria-label="Previous Design">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="absolute top-1/2 -translate-y-1/2 right-4 bg-primary/80 hover:bg-primary text-white text-4xl p-4 rounded-full shadow-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-75 animate-fadeIn delay-300" onclick="changeSlide(1)" aria-label="Next Design">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <!-- Removed in-page slider navigation buttons -->
             </div>
         </section>
 
@@ -493,9 +506,18 @@
         const closeMenuButton = document.getElementById('close-menu');
 
         menuToggle.addEventListener('click', () => {
-            mobileMenuOverlay.classList.remove('translate-x-full');
-            mobileMenuOverlay.classList.add('translate-x-0');
-            document.body.classList.add('overflow-hidden'); // Prevent background scroll
+            // Toggle visibility based on current state
+            if (mobileMenuOverlay.classList.contains('translate-x-full')) {
+                // Menu is hidden, so open it
+                mobileMenuOverlay.classList.remove('translate-x-full');
+                mobileMenuOverlay.classList.add('translate-x-0');
+                document.body.classList.add('overflow-hidden'); // Prevent background scroll
+            } else {
+                // Menu is open, so close it
+                mobileMenuOverlay.classList.remove('translate-x-0');
+                mobileMenuOverlay.classList.add('translate-x-full');
+                document.body.classList.remove('overflow-hidden'); // Allow background scroll
+            }
         });
 
         closeMenuButton.addEventListener('click', () => {
@@ -513,12 +535,25 @@
             });
         });
 
+        // Close mobile menu by clicking on the overlay background
+        mobileMenuOverlay.addEventListener('click', (event) => {
+            // Check if the click occurred directly on the overlay, not on its children
+            if (event.target === mobileMenuOverlay) {
+                closeMenuButton.click(); // Simulate click on close button
+            }
+        });
+
+
         // Image Slider Functionality (for the in-page gallery)
+        // This functionality is still here, but the navigation buttons are hidden by CSS.
+        // The images are still part of a "slider" structure to facilitate the fullscreen modal logic.
         let currentSlide = 0;
         const slider = document.getElementById("designSlider");
         const slides = slider.querySelectorAll('.slide');
         const totalSlides = slides.length;
 
+        // The changeSlide function is no longer called by in-page buttons,
+        // but it's kept for the fullscreen modal's navigation.
         function changeSlide(direction) {
             currentSlide += direction;
             if (currentSlide < 0) {
