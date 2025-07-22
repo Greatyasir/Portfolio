@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Yasir Mehmood | Portfolio</title>
  <style>
   * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: ;
   }
 
   body {
@@ -30,7 +32,7 @@ a:hover {
   position: fixed;
   top: 0;
   left: 0;
-  width: 240px;
+  width: 210px;
   height: 100vh;
   background: #fff;
   box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
@@ -46,8 +48,8 @@ a:hover {
 }
 
 .sidebar img {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   border: 3px solid #007BFF;
   animation: glow 2s infinite alternate;
@@ -67,6 +69,7 @@ a:hover {
   margin-top: 10px;
   color: #007BFF;
   text-align: center;
+  
 }
 
 .toggle-menu {
@@ -222,7 +225,10 @@ ul {
     height: auto;
     padding: 20px;
   }
-
+.sidebar img {
+  width: 100px;
+  height: 100px;
+}
   .sidebar-header {
     flex-direction: row;
     align-items: center;
@@ -230,7 +236,9 @@ ul {
 
   .sidebar-header h2 {
     margin: 0 10px;
-    font-size: 20px;
+    font-size: 30px;
+    text-align:left;
+    line-height: 1.1;
   }
 
   .toggle-menu {
@@ -258,7 +266,12 @@ ul {
     margin: 0;
   }
 }
-
+.project-card img {
+  padding:40px;
+  display: block;
+  max-width: 80%;
+  object-fit: contain;
+}
 /* Slider styling */
 .slider-container {
   position: relative;
@@ -304,6 +317,49 @@ ul {
   right: 10px;
 }
 
+
+
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin: 0 auto;
+}
+
+.service-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease-in-out;
+}
+
+.service-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+.service-box .icon {
+  font-size: 2.2rem;
+  color: #5a6ff0;
+  margin-bottom: 1px;
+  display: inline-block;
+}
+
+.service-box h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.service-box p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+
 </style>
 
 </head>
@@ -311,7 +367,7 @@ ul {
   <div class="sidebar">
   <div class="sidebar-header">
     <img src="https://i.ibb.co/Y7r4tqX6/334778185-174391352045897-7046675739063308292-n-1.jpg" alt="334778185-174391352045897-7046675739063308292-n-1" border="0">
-    <h2>Yasir Mehmood</h2>
+    <h2><b>Yasir</b><br> Mehmood</h2>
     <button class="toggle-menu" onclick="toggleMenu()">☰</button>
   </div>
   <nav class="menu">
@@ -327,139 +383,181 @@ ul {
 
   <div class="main">
     <section id="about">
-      <h1>About Me</h1>
-      <p>
-        I'm a dedicated <strong>Graphic Designer</strong> and <strong>Shopify Developer</strong> with over <strong>9 years of experience</strong> in eCommerce, branding, and online store optimization. I craft high-converting stores and compelling visuals that elevate brand identity and UX.
-      </p>
-      <ul>
-        <li><strong>Freelance Designer</strong> (2015–2017)</li>
-        <li><strong>HH Property & Marketing</strong> – Office Assistant & Digital Marketer (2017–2020)</li>
-        <li><strong>Femcare / Hyper-Sunk.com</strong> – Graphic Designer & Shopify Developer (2020–Present)</li>
-        <li><strong>ThinkTrek / Phonecase.pk</strong> – Remote Shopify Developer & Graphic Designer (2022–Present)</li>
-      </ul>
-    </section>
+  <h1>About Me</h1>
+  <p>
+    I'm a passionate <strong>Graphic Designer</strong>, <strong>Shopify Developer</strong>, and <strong>Digital Marketer</strong> with over <strong>9 years of experience</strong> specializing in eCommerce, branding, SEO, and online store optimization. I focus on creating visually compelling designs and high-performing Shopify stores that drive conversions and enhance user experience. With a deep understanding of digital trends, I blend creativity with strategy to help brands grow and thrive in competitive markets.
+  </p>
+</section>
+
 <section id="experience">
   <h1>Professional Experience</h1>
   <div class="services">
     <div class="service-card">
+      <i class="fas fa-pen-nib fa-2x"></i>
       <h3>Freelance Designer</h3>
-      <p>2015 – 2017<br>
-      Designed visual assets, branding, and UI mockups for small businesses and personal clients across various industries.</p>
+      <span class="duration">2015 – 2017</span>
+      <p>
+        Created visual identities, UI mockups, and branding assets for diverse clients. Focused on delivering cohesive designs tailored to each brand's audience.
+      </p>
     </div>
+
     <div class="service-card">
+      <i class="fas fa-building fa-2x"></i>
       <h3>HH Property & Marketing</h3>
-      <p>2017 – 2020<br>
-      Office Assistant & Digital Marketer – Managed marketing content, social media campaigns, and administrative tasks for real estate promotions.</p>
+      <span class="duration">2017 – 2020</span>
+      <p>
+        Office Assistant & Digital Marketer – Oversaw real estate marketing campaigns, content creation, and administrative coordination to support sales initiatives.
+      </p>
     </div>
+
     <div class="service-card">
+      <i class="fas fa-store fa-2x"></i>
       <h3>Femcare / Hyper-Sunk.com</h3>
-      <p>2020 – Present<br>
-      Graphic Designer & Shopify Developer – Developed eCommerce assets, managed store optimizations, created visuals for product listings and paid ads.</p>
+      <span class="duration">2020 – Present</span>
+      <p>
+        Graphic Designer & Shopify Developer – Designed eCommerce visuals, managed Shopify storefronts, and optimized listings for SEO and paid advertising campaigns.
+      </p>
     </div>
+
     <div class="service-card">
+      <i class="fas fa-laptop-code fa-2x"></i>
       <h3>ThinkTrek / Phonecase.pk</h3>
-      <p>2022 – Present (Remote)<br>
-      Shopify Developer & Graphic Designer – Responsible for building responsive stores, UX flows, and promotional graphics.</p>
+      <span class="duration">2022 – Present (Remote)</span>
+      <p>
+        Shopify Developer & Graphic Designer – Built responsive Shopify themes, improved user experience (UX) flows, and delivered high-impact visuals for promotions.
+      </p>
     </div>
   </div>
 </section>
 
+
     <section id="services">
-      <h1>Services</h1>
-      <div class="services">
-  <div class="service-card">
-    <h3>Graphic Design</h3>
-    <p>
-      Craft visually engaging graphics that align with your brand identity. I design banners, social media posts, product packaging, brochures, UI kits, and advertising creatives that elevate user engagement and brand recall.
-    </p>
-  </div>
+  <h1>Our Services</h1>
+  <div class="services-grid">
 
-  <div class="service-card">
-    <h3>Shopify Development</h3>
-    <p>
-      Build or enhance your Shopify store with custom-coded themes, responsive design, product page optimization, custom sections, and conversion-focused UX. I ensure your store looks great and functions flawlessly on all devices.
-    </p>
-  </div>
+    <div class="service-box">
+      <i class="fas fa-paint-brush icon"></i>
+      <h3>Graphic Design</h3>
+      <p>Design banners, packaging, brochures, UI kits, and branding assets that elevate user experience and brand recall.</p>
+    </div>
 
-  <div class="service-card">
-    <h3>Digital Marketing</h3>
-    <p>
-      Promote your business through smart, data-driven campaigns. Services include social media marketing, paid ads (Facebook, Instagram, Google), email marketing, influencer collaborations, and audience retargeting to maximize ROI.
-    </p>
-  </div>
+    <div class="service-box">
+      <i class="fas fa-laptop-code icon"></i>
+      <h3>Shopify Development</h3>
+      <p>Create high-converting Shopify stores with responsive design, custom themes, and optimized UX.</p>
+    </div>
 
-  <div class="service-card">
-    <h3>SEO (Search Engine Optimization)</h3>
-    <p>
-      Improve your website’s visibility on search engines through strategic keyword research, on-page SEO, optimized meta titles/descriptions, image alt-tags, site speed improvements, and technical SEO audits to increase organic traffic.
-    </p>
+    <div class="service-box">
+      <i class="fas fa-bullhorn icon"></i>
+      <h3>Digital Marketing</h3>
+      <p>Run targeted campaigns across Facebook, Google, and social platforms to grow and convert your audience.</p>
+    </div>
+
+    <div class="service-box">
+      <i class="fas fa-search icon"></i>
+      <h3>SEO Optimization</h3>
+      <p>Boost search rankings with on-page SEO, meta optimization, keyword strategy, and technical audits.</p>
+    </div>
+
   </div>
+</section>
+
+  <section id="projects">
+  <h1>eCommerce Projects</h1>
+  <div class="projects">
+<div class="project-card">
+  <img src="https://trendly.pk/cdn/shop/files/trendly_logo_87434b99-c0a1-401a-aeb3-aa57fb174f2a_225x@2x.png" alt="Trendly.pk logo">
+  <div class="info">
+    <h3>Trendly.pk</h3>
+    <p>Modern lifestyle eCommerce brand offering trendy fashion, beauty, and accessories with a clean, responsive Shopify layout.</p>
+    <small>Role: Shopify Theme Customization & Visual Design</small><br>
+    <a href="https://trendly.pk" target="_blank">Visit Website →</a>
+  </div>
+  <div class="logo-placeholder"></div>
 </div>
 
-    </section>
-
-    <section id="projects">
-      <h1>eCommerce Projects</h1>
-      <div class="projects">
-        <!-- Example -->
-        <div class="project-card">
-          <img src="https://www.progirly.com/assets/logo.png" alt="Progirly">
-          <div class="info">
-            <h3>Progirly.com</h3>
-            <p>Shopify store for eco-friendly menstrual care products.</p><small>Role: Theme customization & Product graphics – Shopify</small><br>
-            <a href="https://www.progirly.com" target="_blank">Visit Website →</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="https://hyper-sunk.com/logo.png" alt="Hyper-Sunk">
-          <div class="info">
-            <h3>Hyper-Sunk.com</h3>
-            <p>IPL Laser device e-comm site with clean UX & banners.</p><small>Role: Theme dev & Graphics – Femcare</small><br>
-            <a href="https://hyper-sunk.com" target="_blank">Visit Website →</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="https://bagzele.com/logo.png" alt="BagZele">
-          <div class="info">
-            <h3>BagZele.com</h3>
-            <p>Ladies' bags store; polished product presentation & banners.</p><small>Shopify dev & Image design</small><br>
-            <a href="https://bagzele.com" target="_blank">Visit Website →</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="https://castify.pk/logo.png" alt="Castify">
-          <div class="info">
-            <h3>Castify.pk</h3>
-            <p>Glossy phone case store: custom UI & responsive design.</p><small>Shopify dev & Product graphics</small><br>
-            <a href="https://castify.pk" target="_blank">Visit Website →</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="https://techshop.ae/logo.png" alt="TechShop">
-          <div class="info">
-            <h3>TechShop.ae</h3>
-            <p>UAE gadget accessories store: UX polish & visual assets.</p><small>Shopify dev & Graphics</small><br>
-            <a href="https://techshop.ae" target="_blank">Visit Website →</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="https://www.solacewear.lk/logo.png" alt="SolaceWear">
-          <div class="info">
-            <h3>SolaceWear.com</h3>
-            <p>Apparel brand: product art & layout optimization.</p><small>Shopify dev & Design</small><br>
-            <a href="https://www.solacewear.lk" target="_blank">Visit Website →</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="https://via.placeholder.com/400x200?text=Phonecase.pk" alt="Phonecase.pk">
-          <div class="info">
-            <h3>Phonecase.pk</h3>
-            <p>Custom phone cases; full theme build & UX flow.</p><small>ThinkTrek – Shopify Developer & Designer</small><br>
-            <a href="https://phonecase.pk" target="_blank">Visit Website →</a>
-          </div>
-        </div>
+    <div class="project-card">
+      <img src="https://i.ibb.co/C3XC8zxf/Untitled-1-4135ecb8-b59f-4456-85df-fd5690c2c244.webp" alt="Progirly logo">
+      <div class="info">
+        <h3>Progirly.com</h3>
+        <p>Shopify store offering reusable menstrual cups with eco-conscious branding. Focus on sustainability and comfort.</p>
+        <small>Role: Theme customization & product graphics – Shopify</small><br>
+        <a href="https://www.progirly.com" target="_blank">Visit Website →</a>
       </div>
-    </section>
+      <!-- Logo area placeholder -->
+      <div class="logo-placeholder"></div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://hyper-sunk.com/cdn/shop/files/Untitled-1_40559f3c-0d6f-4607-940f-b07c6555db32.png" alt="Hyper-Sunk logo">
+      <div class="info">
+        <h3>Hyper-Sunk.com</h3>
+        <p>Online store for FDA-approved IPL laser hair removal devices with sleek UX and promotional banners.</p>
+        <small>Role: Theme development & graphics – Femcare</small><br>
+        <a href="https://hyper-sunk.com" target="_blank">Visit Website →</a>
+      </div>
+      <div class="logo-placeholder"></div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://bagzele.com/cdn/shop/files/BagZelelogo.png" alt="BagZele logo">
+      <div class="info">
+        <h3>BagZele.com</h3>
+        <p>Women’s bags e‑commerce store—premium styling, polished product displays and promotional banners.</p>
+        <small>Role: Shopify dev & image design</small><br>
+        <a href="https://bagzele.com" target="_blank">Visit Website →</a>
+      </div>
+      <div class="logo-placeholder"></div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://i.ibb.co/4Rcy3bT8/castify.png" alt="Castify logo">
+      <div class="info">
+        <h3>Castify.pk</h3>
+        <p>High-quality custom phone case store with glossy visuals, responsive UI and UX flow.</p>
+        <small>Role: Shopify dev & product graphics</small><br>
+        <a href="https://castify.pk" target="_blank">Visit Website →</a>
+      </div>
+      <div class="logo-placeholder"></div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://i.ibb.co/GfWpJjJy/Black-Edgy-We-Are-Open-Instagram-Post-6-1200x1200.png" alt="TechShop logo">
+      <div class="info">
+        <h3>TechShop.ae</h3>
+        <p>UAE gadget & accessory store offering fast delivery with polished UX and visual assets.</p>
+        <small>Role: Shopify dev & graphics</small><br>
+        <a href="https://techshop.ae" target="_blank">Visit Website →</a>
+      </div>
+      <div class="logo-placeholder"></div>
+    </div>
+
+    <div class="project-card">
+  <img src="https://solacewear.com/cdn/shop/files/solacewear_tag_2_63e9ad43-1a8d-426d-881e-27cc05f7e4c0.png" alt="SolaceWear logo">
+  <div class="info">
+    <h3>SolaceWear.com</h3>
+    <p>Elegant ready-to-wear Pakistani clothing for women, blending comfort and timeless design—featuring breathable lawn fabrics, formal wear, basics, and new arrivals.</p>
+    <small>Role: Shopify Development & Visual Design</small><br>
+    <a href="https://solacewear.com" target="_blank">Visit Website →</a>
+  </div>
+  <div class="logo-placeholder"></div>
+</div>
+
+
+    <div class="project-card">
+      <img src="https://phonecase.pk/cdn/shop/files/phonecase_logo_c7bd4d35-3c72-4816-8e29-dbb8f55f4b50_205x@2x.png" alt="Phonecase.pk">
+      <div class="info">
+        <h3>Phonecase.pk</h3>
+        <p>Pakistan’s #1 mobile-case store featuring custom theme build, UX optimizations, and product visuals.</p>
+        <small>ThinkTrek – Shopify Developer & Designer</small><br>
+        <a href="https://phonecase.pk" target="_blank">Visit Website →</a>
+      </div>
+      <div class="logo-placeholder"></div>
+    </div>
+
+  </div>
+</section>
+
 
     <section id="designs">
   <h1>Graphic Design Work</h1>
